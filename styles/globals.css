@@ -14,3 +14,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+nav {
+  background-color: #262637;
+  color: white;
+  padding: 10px 50px;
+  position: relative;
+}

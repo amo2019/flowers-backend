@@ -1,0 +1,44 @@
+.container {
+  height: 40px;
+  border-top: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.title {
+  font-weight: 400;
+  color: white;
+  background-color: rgba(0, 0, 228, 0.774);
+  width: max-content;
+  padding: 5px;
+  transition: all 1s ease;
+}
+
+.title:hover {
+  background-color: white;
+  color: rgba(0, 0, 228, 0.774);
+}
+
+.linkTitle {
+  text-decoration: underline;
+  transform-origin: left;
+  transition: all 1s ease;
+}
+
+.linkTitle:hover {
+  transform: scale(1.1);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.linkText {
+  margin-right: 20px;
+  cursor: pointer;
+}
