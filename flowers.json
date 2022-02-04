@@ -1,0 +1,274 @@
+[
+    {
+      "category": "Shrubs",
+      "price": 15.99,
+      "description": "Large double. Good grower, heavy bloomer. Early to mid-season, acid loving plants. Plant in moist well drained soil with pH of 4.0-5.5.",
+      "image": "azalea.jpg",
+      "title": "Azalea",
+      "productId": 1
+    },
+    {
+      "category": "Shrubs",
+      "price": 33.99,
+      "description": "Beautiful large royal purple flowers adorn attractive satiny green leaves that turn orange\\/red in cold weather. Grows to up to 18 feet, or prune annually to shorten.",
+      "image": "tibouchina-semidecandra.jpg",
+      "title": "Tibouchina Semidecandra",
+      "productId": 2
+    },
+    {
+      "category": "Shrubs",
+      "price": 12.99,
+      "description": "Blooms in summer, 20-35 inches high. Fertilize regularly for best results. Full sun, drought tolerant.",
+      "image": "hibiscus.jpg",
+      "title": "Hibiscus",
+      "productId": 3
+    },
+    {
+      "category": "Shrubs",
+      "price": 5.99,
+      "description": "Quick-growing, herbaceous, shrub reaching up to 30 inches in height, forming a rounded, dense bush.",
+      "image": "plectranthus.jpg",
+      "title": "Plectranthus",
+      "productId": 4
+    },
+    {
+      "category": "Shrubs",
+      "price": 15.99,
+      "description": "Slow growing, upright to spreading shrub. Oval, glossy, leaves and profuse winter to spring blooming flowers.",
+      "image": "camellia-japonica.jpg",
+      "title": "Camellia Japonica",
+      "productId": 5
+    },
+    {
+      "category": "Shrubs",
+      "price": 10.99,
+      "description": "Thorny woody vine scrambles over other plants with their hooked thorns. Pest free.",
+      "image": "bougainvillea-spectabilis.jpg",
+      "title": "Bougainvillea Spectabilis",
+      "productId": 6
+    },
+    {
+      "category": "Shrubs",
+      "price": 22.99,
+      "description": "Deep purple colored flowers bushy rounded growth habit to 3 feet tall. Plant in full sun. Water regularly.",
+      "image": "rosa-burgundy.jpg",
+      "title": "Rosa Burgundy",
+      "productId": 7
+    },
+    {
+      "category": "Shrubs",
+      "price": 22.99,
+      "description": "Deep purple colored flowers bushy rounded growth habit to 3 feet tall. Plant in full sun. Water regularly.",
+      "image": "rosa-iceberg.jpg",
+      "title": "Rosa Iceberg",
+      "productId": 8
+    },
+    {
+      "category": "Container Plants",
+      "price": 45.99,
+      "description": "They do not thrive indoors, where the light is too dim, and humidity too low, for them to grow properly.",
+      "image": "bonsai-tree.jpg",
+      "title": "Bonsai Tree",
+      "productId": 9
+    },
+    {
+      "category": "Container Plants",
+      "price": 12.99,
+      "description": "Blooms continuously from early spring to first frost. Full sun or part shade, moist well-drained soil.",
+      "image": "calibrachoa-noa.jpg",
+      "title": "Calibrachoa Noa",
+      "productId": 10
+    },
+    {
+      "category": "Container Plants",
+      "price": 14.99,
+      "description": "The flowers last about ten weeks. They have a waxy texture and reach a height of more than 20 inches.",
+      "image": "cymbidium-aestivum.jpg",
+      "title": "Cymbidium Aestivum",
+      "productId": 11
+    },
+    {
+      "category": "Container Plants",
+      "price": 4.99,
+      "description": "Creamy-white centers, medium green outer foliage with flattened outer foliage.",
+      "image": "brassica-oleracea.jpg",
+      "title": "Brassica Oleracea",
+      "productId": 12
+    },
+    {
+      "category": "Container Plants",
+      "price": 4.99,
+      "description": "Compact mounds of colorful dainty flowers, good for window boxes. Fertile well drained soil.",
+      "image": "viola-penny.jpg",
+      "title": "Viola Penny",
+      "productId": 13
+    },
+    {
+      "category": "Container Plants",
+      "price": 5.99,
+      "description": "Cotula have very fragrant orange flowers that bloom in the middle of summer.",
+      "image": "cotula-pincushion.jpg",
+      "title": "Cotula Pincushion",
+      "productId": 14
+    },
+    {
+      "category": "Container Plants",
+      "price": 4.99,
+      "description": "Well drained neutral to slightly acid soil, bright light. Do not over-fertilize or these flowers will lose scent.",
+      "image": "pelargonium-peltatum.jpg",
+      "title": "Pelargonium Peltatum",
+      "productId": 15
+    },
+    {
+      "category": "Container Plants",
+      "price": 3.99,
+      "description": "Compact mounds of colorful dainty flowers, good for window boxes. Fertile well drained soil.",
+      "image": "pansy-blue.jpg",
+      "title": "Pansy Blue",
+      "productId": 16
+    },
+    {
+      "category": "Container Plants",
+      "price": 3.99,
+      "description": "Compact mounds of colorful dainty flowers, good for window boxes. Fertile well drained soil.",
+      "image": "cymbidium-aestivum.jpg",
+      "title": "Cymbidium Aestivum",
+      "productId": 17
+    },
+    {
+      "category": "Container Plants",
+      "price": 25.99,
+      "description": "Choose the brightest windows in your house for your orchids, place on an humidity tray and spray regularly.",
+      "image": "phalaenopsis-purple.jpg",
+      "title": "Phalaenopsis Purple",
+      "productId": 18
+    },
+    {
+      "category": "Herbaceous Perennials",
+      "price": 5.99,
+      "description": "They thrive in fertile, fast draining, slightly alkaline (pH 6.75) soil. Avoid overwatering.",
+      "image": "dianthus.jpg",
+      "title": "Dianthus",
+      "productId": 19
+    },
+    {
+      "category": "Herbaceous Perennials",
+      "price": 9.99,
+      "description": "Chrysanthemums respond to plenty of food and moisture, and prefer full sun.",
+      "image": "chrysanthemum.jpg",
+      "title": "Chrysanthemum",
+      "productId": 20
+    },
+    {
+      "category": "Herbaceous Perennials",
+      "price": 7.99,
+      "description": "Summer flowering, 12–18” high, likes full sun and well drained soil. Drought tolerant.",
+      "image": "armeria-alliacea.jpg",
+      "title": "Armeria Alliacea",
+      "productId": 21
+    },
+    {
+      "category": "Herbaceous Perennials",
+      "price": 6.99,
+      "description": "Grows to 15 inches. The species is easy to grow from seeds or cuttings. This species prefers full sun.",
+      "image": "salvia-splendens.jpg",
+      "title": "Salvia Splendens",
+      "productId": 22
+    },
+    {
+      "category": "Herbaceous Perennials",
+      "price": 8.99,
+      "description": "Easily grown, tolerant of drought and poor soil, flower and foliage improves with feeding. Full sun.",
+      "image": "agapanthus.jpg",
+      "title": "Agapanthus",
+      "productId": 23
+    },
+    {
+      "category": "Herbaceous Perennials",
+      "price": 5.99,
+      "description": "These plants are very hardy, easy to grow, and increase readily. Average flower size is 3-4 inches in diameter.",
+      "image": "iris-sibirica.jpg",
+      "title": "Iris Sibirica",
+      "productId": 24
+    },
+    {
+      "category": "Herbaceous Perennials",
+      "price": 9.99,
+      "description": "Chrysanthemums grow best and produce the most flowers if they are planted in full sunshine.",
+      "image": "chrysanthemum.jpg",
+      "title": "Chrysanthemum",
+      "productId": 25
+    },
+    {
+      "category": "Herbaceous Perennials",
+      "price": 10.99,
+      "description": "Grown primarily for its attractive silvergray foliage rather than its yellow flowers. Drought tolerant.",
+      "image": "senecio-cineraria.jpg",
+      "title": "Senecio Cineraria",
+      "productId": 26
+    },
+    {
+      "category": "Cacti & Succulents",
+      "price": 18.99,
+      "description": "Add water until there is half inch of dry soil on the surface. Do not water again until the soil is completely dry.",
+      "image": "red-cactus.jpg",
+      "title": "Red Cactus",
+      "productId": 27
+    },
+    {
+      "category": "Cacti & Succulents",
+      "price": 30.99,
+      "description": "Drought tolerant, well drained soil. Prefers full sun.",
+      "image": "aloe-vera.jpg",
+      "title": "Aloe Vera",
+      "productId": 28
+    },
+    {
+      "category": "Cacti & Succulents",
+      "price": 20.99,
+      "description": "Easy to care for, requiring watering only when they’re dry. They like bright but indirect light.",
+      "image": "exotic_dancer.jpg",
+      "title": "Exotic Dancer",
+      "productId": 29
+    },
+    {
+      "category": "Cacti & Succulents",
+      "price": 18.5,
+      "description": "Locate it in a place where it is exposed to at least a few hours of direct sunlight.",
+      "image": "schlumbergera.jpg",
+      "title": "Schlumbergera",
+      "productId": 30
+    },
+    {
+      "category": "Cacti & Succulents",
+      "price": 12.99,
+      "description": "These plants blend in among the stones as a means of protection. Grazing animals would otherwise eat them.",
+      "image": "lithops.jpg",
+      "title": "Lithops",
+      "productId": 31
+    },
+    {
+      "category": "Cacti & Succulents",
+      "price": 55.99,
+      "description": "The Mexican Fence Post will eventually reach 20 feet tall. Protect the growing tips with Styrofoam cups on the tops.",
+      "image": "pachycereus-marginatus.jpg",
+      "title": "Pachycereus Marginatus",
+      "productId": 32
+    },
+    {
+      "category": "Cacti & Succulents",
+      "price": 25.99,
+      "description": "Growing as a large roughly spherical globe, it may eventually reach over a meter in height after many years.",
+      "image": "golden-barrel.jpg",
+      "title": "Golden Barrel",
+      "productId": 33
+    },
+    {
+      "category": "Cacti & Succulents",
+      "price": 16.99,
+      "description": "The plants should be kept almost completely dry during the winter months, once a month should be fine.",
+      "image": "opuntia-falcata.jpg",
+      "title": "Opuntia Falcata",
+      "productId": 34
+    }
+  ]
