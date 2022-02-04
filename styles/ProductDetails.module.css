@@ -1,0 +1,27 @@
+.wrapper {
+  padding: 10px 10px;
+}
+
+.container {
+  padding-bottom: 16px;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 125ch;
+  max-width: 125ch;
+  width: 100%;
+  justify-content: space-around;
+  align-self: center;
+  padding: 15px 15px;
+}
+
+.textContainer {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 50ch;
+  padding: 5px 5px;
+}
+
+.detailsImage {
+  border-radius: 8pt;
+}
