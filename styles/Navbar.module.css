@@ -7,14 +7,28 @@
 .search {
   display: flex;
   align-items: center;
-  background-color: gray;
+  background-color: #a59e9e;
   padding: 10px 20px;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .search {
+    padding: 5px 10px;
+  }
 }
 
 .searchInput {
   border: none;
   background-color: transparent;
+  outline: thin;
+}
+
+@media screen and (max-width: 800px) {
+  .searchInput {
+    width: 100px;
+    padding: 5px;
+  }
 }
 
 .searchInput::placeholder {
@@ -22,5 +36,15 @@
 }
 
 .navImage {
-  width: 60px;
+  height: 40px;
+  width: 50px;
+  padding: 25px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  .navImage {
+    width: 30px;
+    padding: 5px;
+  }
 }

@@ -1,3 +1,11 @@
+.wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0.2rem;
+  text-align: center;
+}
+
 .container {
   height: 40px;
   border-top: 1px solid black;
@@ -6,19 +14,18 @@
   justify-content: space-around;
   font-size: 18px;
   padding: 10px;
+  margin-top: 40px;
 }
 
 .title {
   font-weight: 400;
-  color: white;
-  background-color: rgba(0, 0, 228, 0.774);
+  color: rgba(0, 0, 0, 0.774);
   width: max-content;
   padding: 5px;
   transition: all 1s ease;
 }
 
 .title:hover {
-  background-color: white;
   color: rgba(0, 0, 228, 0.774);
 }
 
@@ -29,7 +36,7 @@
 }
 
 .linkTitle:hover {
-  transform: scale(1.1);
+  transform: scale(1.04);
 }
 
 .link {
