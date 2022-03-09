@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+
+.signInContainer {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signInTitle {
+  margin: 10px 0;
+}
+
+.buttonsBarContainer {
+  display: flex;
+  justify-content: space-between;
+}
