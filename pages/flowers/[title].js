@@ -2,6 +2,8 @@ import style from "../../styles/ProductDetails.module.css";
 import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
+import CustomButton from '../../components/customButton/CustomButton';
+import {useAddToCart, useRemoveFromCart, useCartItems} from '../../zustand-store';
 
 const getFlower = async (key, title) => {
   const { data } = await axios.get(
@@ -19,13 +21,15 @@ export async function getServerSideProps(context) {
   };
 }
 
-function title ({ data }) {
+function Title ({ data }) {
+  const addToCart = useAddToCart()
 /*   const dispatch = useDispatch();
   
   useEffect(()=>{
     dispatch(setHeaderStatus(false))    
     return () => dispatch(setHeaderStatus(true))
   },[]) */
+  
   return (
 <div className={style.wrapper}>
 <Head>
@@ -58,6 +62,11 @@ function title ({ data }) {
             </div>
           ))}
         </div>
+        <div className={style.buttonsBarContainer}>
+          <CustomButton onClick={()=>addToCart({ productId: data.productId, title: data.title, price: data.price, image: `/flowers/${data.title
+              .toLowerCase()
+              .replace(" ", "-")}.jpg` })}> Add To Cart </CustomButton>
+        </div>
       </div>
     </>
   )}
@@ -66,7 +75,7 @@ function title ({ data }) {
   );
 };
 
-export default title;
+export default Title;
 
 
 

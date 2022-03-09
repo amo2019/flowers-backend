@@ -4,10 +4,14 @@ import Head from "next/head";
 import Link from "next/link";
 import axios from "axios";
 import { useQuery } from "react-query";
-import { useDispatch, useSelector } from "react-redux";
-import { filteredProducts, filteredField, setHeaderStatus } from "../redux/productSlice";
 import Image from "next/image";
 import List from "../components/carousel/List";
+import CustomButton from '../components/customButton/CustomButton';
+import {useAddToCart, useSearchItem} from '../zustand-store';
+import {
+  Add,
+} from "@material-ui/icons";
+
 
 const getPerfume = async (key, q) => {
   const { data } = await axios.get(`/api/search?q=${escape(q)}`);
@@ -20,11 +24,12 @@ const getPerfume = async (key, q) => {
 };
 
 const Home = () => {
+  const addToCart = useAddToCart()
+  const searchItem = useSearchItem()
   const [query, setQuery] = useState("");
-  let searchField = useSelector((state) => state.product.searchField);
   useEffect(()=>{
-    setQuery(searchField);
-  },[searchField])
+    setQuery(searchItem);
+  },[searchItem])
   const { data } = useQuery(["q", query], getPerfume);
 
   const handleQuery = (evt) => {
@@ -40,7 +45,7 @@ const Home = () => {
     <div className={style.container}>
         {data && (
           <div className={style.productListCardContainer}>
-            {data.map(({ productId, title, description, image }) => (
+            {data.map(({ productId, title, price, description, image }) => (
               <div className={style.card}  key={productId}>
                 <Link href={`/flowers/${title}`} passHref>
                   <div className={style.imageContainer}>
@@ -53,10 +58,11 @@ const Home = () => {
                   />
                     <div className={style.cardDesc} >
                       <span>{title}</span>
-                      {/* <span >{description}</span> */}
                     </div>
                   </div>
                 </Link>
+                        <button className={style.buttonsBarContainer} onClick={addToCart.bind(this, { productId, title, price, image })}> Add To Cart </button>
+
               </div>
             ))}
           </div>
