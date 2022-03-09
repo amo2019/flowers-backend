@@ -16,7 +16,7 @@ const Contact = () => {
           rows={6}
           placeholder="Message"
         />
-        <button className={style.button}>SUBMIT</button>
+        <button className={style.LargeButton}>SUBMIT</button>
       </form>
     </div>
     </>
