@@ -79,10 +79,23 @@
   transition: 0.3s ease-out 0.2s;
   margin: 1rem auto;
   padding: 15px 15px;
+  position: relative;
 }
 
-.imageContainer {
-  position: relative;
+.buttonsBarContainer {
+  display: none;
+}
+
+.card:hover .buttonsBarContainer {
+  display: flex;
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  opacity: 60%;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: border 2s ease-out 1s;
 }
 
 .card:hover {

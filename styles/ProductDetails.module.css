@@ -25,3 +25,8 @@
 .detailsImage {
   border-radius: 8pt;
 }
+
+.buttonsBarContainer {
+  display: flex;
+  justify-content: space-between;
+}

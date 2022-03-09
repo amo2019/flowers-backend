@@ -9,9 +9,9 @@
 }
 
 .form {
-  width: 500px;
-  height: 500px;
-  padding: 50px;
+  max-width: 700px;
+  height: 450px;
+  padding: 20px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -37,7 +37,7 @@
   padding-left: 10px;
 }
 
-.button {
+.LargeButton {
   margin-top: 20px;
   padding: 5px 10px;
   border: none;
@@ -49,7 +49,7 @@
   cursor: pointer;
 }
 
-.button:hover {
+.LargeButton:hover {
   background-color: rgba(38, 38, 55, 0.8);
 }
 
