@@ -1,0 +1,74 @@
+.cartDropdownContainer {
+  position: absolute;
+  width: 240px;
+  height: 340px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 12px;
+  border: 1px solid black;
+  background-color: white;
+  top: 52px;
+  right: 15px;
+  z-index: 5;
+  justify-content: space-around;
+}
+
+.emptyMessageContainer {
+  font-size: 18px;
+  margin: 50px auto;
+}
+
+.cartItemsContainer {
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.flexDiv {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.buttonStyles {
+  background-color: black;
+  color: white;
+  border: none;
+  stroke: blueviolet;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.buttonStyles:hover {
+  background-color: white;
+  color: black;
+}
+
+.invertedButtonStyles {
+  background-color: rgb(199, 61, 61);
+  color: rgb(249, 243, 243);
+  border: 1px solid rgb(199, 61, 61);
+}
+
+.invertedButtonStyles:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(17, 17, 17);
+}
+
+.customButtonContainer {
+  margin-left: 0px;
+  letter-spacing: 0.5px;
+  line-height: 30px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed';
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
