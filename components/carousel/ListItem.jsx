@@ -39,7 +39,7 @@ export default function ListItem({ product, index, title }) {
             </div>
             <Link  href={`/flowers/${title}`} passHref>
                 <div className={styles.desc}>
-                  Lorem class dolor, sit amet consectetur adipisicing.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </div>
             </Link>
           </div>

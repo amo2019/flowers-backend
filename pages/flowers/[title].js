@@ -7,7 +7,7 @@ import {useAddToCart, useRemoveFromCart, useCartItems} from '../../zustand-store
 
 const getFlower = async (key, title) => {
   const { data } = await axios.get(
-    `http://localhost:3000/api/flowers?title=${escape(title)}`
+    `${process.env.NEXT_PUBLIC_URL}/api/flowers?title=${escape(title)}`
   );
   return data;
 };
