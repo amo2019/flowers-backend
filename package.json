@@ -5,11 +5,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+    "@prisma/client": "^3.11.1",
     "axios": "^0.19.2",
     "firebase": "^9.6.6",
     "next": "^12.0.10",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "eslint": "8.7.0",
-    "eslint-config-next": "12.0.8"
+    "eslint-config-next": "12.0.8",
+    "prisma": "^3.11.1"
   }
 }

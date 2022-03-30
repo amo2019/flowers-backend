@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import CustomButton from '../../components/customButton/CustomButton';
 import {useAddToCart, useRemoveFromCart, useCartItems} from '../../zustand-store';
+import { handleCart } from "../../components/utils/utils";
 
 const getFlower = async (key, title) => {
   const { data } = await axios.get(
@@ -23,6 +24,22 @@ export async function getServerSideProps(context) {
 
 function Title ({ data }) {
   const addToCart = useAddToCart()
+  const handleCart = async (method) => {
+     try {
+       const req = await fetch('/api/cart', {
+         method,
+         body: JSON.stringify({
+           quantity:   1, 
+           userId: '1412c9f0-733a-42bd-911e-96a99e17219f',
+           productId: "69dd215c-5351-4690-a7df-8d3f3277d9de"
+         })
+       });
+ 
+       const res = await req.json();
+     } catch (err) {
+       console.log(err);
+     }
+   };
 /*   const dispatch = useDispatch();
   
   useEffect(()=>{
@@ -71,6 +88,13 @@ function Title ({ data }) {
     </>
   )}
 </div>
+<div className={style.buttonsBarContainer}>
+          <CustomButton onClick={()=>handleCart('POST')}> Add To Cart + </CustomButton>
+</div>
+<div className={style.buttonsBarContainer}>
+          <CustomButton onClick={()=>handleCart('DELETE')}> Remove from Cart - </CustomButton>
+</div>
+
 </div>
   );
 };
