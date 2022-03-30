@@ -1,0 +1,66 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextIndex"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:admin@0.0.0.0:5432/ecommerce"
+}
+
+model User {
+  id       String     @id @default(uuid())
+  name     String
+  email    String     @unique
+  password String
+  cartItem CartItem[]
+  orders   Order[]
+  reviews  Review[]
+}
+
+model Product {
+  id          String      @id @default(uuid())
+  name        String
+  price       Int
+  image       String
+  description String?
+  cartItem    CartItem[]
+  reviews     Review[]
+  orderItems  OrderItem[]
+}
+
+model CartItem {
+  id        String  @id @default(uuid())
+  quantity  Int     @default(1)
+  productId String
+  userId    String
+  product   Product @relation(fields: [productId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
+}
+
+model Order {
+  id     String      @id @default(uuid())
+  total  Int?        @default(0)
+  charge String?
+  userId String
+  user   User        @relation(fields: [userId], references: [id])
+  items  OrderItem[]
+}
+
+model OrderItem {
+  id       String    @id @default(uuid())
+  quantity Int
+  orderId  String?
+  order    Order?    @relation(fields: [orderId], references: [id])
+  products Product[]
+}
+
+model Review {
+  id        String  @id @default(cuid())
+  rating    Int
+  text      String
+  productId String
+  userId    String
+  product   Product @relation(fields: [productId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
+}
