@@ -1,0 +1,44 @@
+.star {
+  color: goldenrod;
+  font-size: 2.1rem;
+  flex-grow: 0.02;
+}
+.star::before {
+  content: '\2606';
+  cursor: pointer;
+}
+
+.stars {
+  counter-reset: rateit 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  transition: 0.2s ease-out 0.1s;
+}
+
+.star:hover::before {
+  content: '\2605';
+  color: rgba(254, 201, 0, 0.88);
+}
+
+.stars::after {
+  content: '(' counter(rateit) '/7)';
+}
+
+.rated::before {
+  cursor: pointer;
+  content: '\2605';
+}
+
+.rated {
+  color: goldenrod;
+  font-size: 2.1rem;
+  flex-grow: 0.02;
+  counter-increment: rateit 1;
+}
+
+.rated:hover {
+  transition: 0.3s ease-out 0.2s;
+  color: rgba(254, 201, 0, 0.88);
+}
