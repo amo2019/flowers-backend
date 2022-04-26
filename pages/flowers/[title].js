@@ -3,8 +3,10 @@ import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
 import CustomButton from '../../components/customButton/CustomButton';
-import {useAddToCart, useRemoveFromCart, useCartItems} from '../../zustand-store';
+import {Stars} from '../../components/Stars';
+import {useAddToCart, UserData, uidData} from '../../zustand-store';
 import { handleCart } from "../../components/utils/utils";
+import { useState } from "react";
 
 const getFlower = async (key, title) => {
   const { data } = await axios.get(
@@ -14,15 +16,23 @@ const getFlower = async (key, title) => {
 };
 
 export async function getServerSideProps(context) {
-  const data = await getFlower(null, context.params.title);
+  const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/product?title=${context.params.title}`);
+  const data = await response.json();
+
   return {
     props: {
-      data: data,
+      res: JSON.parse(JSON.stringify(data.product)) || {}, 
     },
   };
 }
 
-function Title ({ data }) {
+function Title ({res}) {
+  const {reviews:[review], ...data} = res;
+  const [userReview, setUserReview] = useState({
+    userText: review?.text ? review.text:'',
+    starsNo: review?.rating ? review.rating:4,
+  });
+  //const review = data ? data.review : []
   const addToCart = useAddToCart()
   const handleCart = async (method) => {
      try {
@@ -30,27 +40,63 @@ function Title ({ data }) {
          method,
          body: JSON.stringify({
            quantity:   1, 
-           userId: '1412c9f0-733a-42bd-911e-96a99e17219f',
-           productId: "69dd215c-5351-4690-a7df-8d3f3277d9de"
+           userId: '18ec7f0c-68fc-4589-8294-06e6623971f4',
+           productId: data.id
          })
        });
- 
+       addToCart({ productId: data.id, name: data.name, price: data.price, image: `/flowers/${data?.name?.toLowerCase()
+        .replace(" ", "-")}.jpg` });
        const res = await req.json();
      } catch (err) {
        console.log(err);
      }
+
+     try {
+      const req = await fetch('/api/product', {
+        method: 'DELETE',
+        body: JSON.stringify({
+          productId: '4f7160ea-bad3-4007-a7bf-b7e855a32afe',
+          name:          "test2",
+          price:         44,
+        })
+      });
+      addToCart({ productId: data.id, name: data.name, price: data.price, image: `/flowers/${data?.name?.toLowerCase()
+       .replace(" ", "-")}.jpg` });
+      const res = await req.json();
+    } catch (err) {
+      console.log(err);
+    }
    };
-/*   const dispatch = useDispatch();
-  
-  useEffect(()=>{
-    dispatch(setHeaderStatus(false))    
-    return () => dispatch(setHeaderStatus(true))
-  },[]) */
+
+   const handleSubmit = async () => {
+    try {
+      const req = await fetch('/api/review', {
+        method: 'POST',
+        body: JSON.stringify({
+          text: userReview.userText,
+          rating: userReview.starsNo,
+          userId: '18ec7f0c-68fc-4589-8294-06e6623971f4',
+          productId: data.id
+        })
+      });
+
+      const res = await req.json();
+      console.log("res:",res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+const {userText, starsNo} = userReview;
+  const handleChange = event => {
+    const { name, value } = event.target;
+
+    setUserReview({ ...userReview, [name]: value });
+  };
   
   return (
 <div className={style.wrapper}>
 <Head>
-  <title>{(data && data.title) || "Perfume"}</title>
+  <title>{(data && data.name) || "Perfume"}</title>
 </Head>
 <div>
   {data && (
@@ -61,8 +107,7 @@ function Title ({ data }) {
           <Image
             className={style.detailsImage}
             alt=""
-            src={`/flowers/${data.title
-              .toLowerCase()
+            src={`/flowers/${data?.name?.toLowerCase()
               .replace(" ", "-")}.jpg`}
               width="250"
               height="200"
@@ -72,29 +117,35 @@ function Title ({ data }) {
         <div className={style.textContainer}>
           {Object.entries(data).map(([key, value]) => (
             <div key={key}>
-              {(key !== "image" && key !== "title") && 
+              {(key !== "image" && key !== "createdAt" && key !== "updatedAt" && key !== "amountInStock" && key !== "notice") && 
               <>
-              <span style={{fontWeight: "bold"}}>{key}:&nbsp;</span>
-              <span >{value}&nbsp;</span> </> }
+              <span style={{fontWeight: "bold"}}>{key}:&nbsp;:&nbsp;</span>
+              <span >{key=="id"?value.slice(26, 32).concat("..."):value}&nbsp;</span> 
+              </>  }
             </div>
+
           ))}
         </div>
         <div className={style.buttonsBarContainer}>
-          <CustomButton onClick={()=>addToCart({ productId: data.productId, title: data.title, price: data.price, image: `/flowers/${data.title
-              .toLowerCase()
-              .replace(" ", "-")}.jpg` })}> Add To Cart </CustomButton>
+          <CustomButton onClick={()=>handleCart('POST')}>Add To Cart</CustomButton>
         </div>
-      </div>
-    </>
+        &#127809;		      
+        </div>
+      </>
   )}
 </div>
-<div className={style.buttonsBarContainer}>
-          <CustomButton onClick={()=>handleCart('POST')}> Add To Cart + </CustomButton>
-</div>
-<div className={style.buttonsBarContainer}>
-          <CustomButton onClick={()=>handleCart('DELETE')}> Remove from Cart - </CustomButton>
-</div>
-
+      <section>
+        <textarea
+               rows="5" cols="36"
+               placeholder="Add a review"
+               name='userText'
+               value={userText}
+               onChange={handleChange}
+               >
+          </textarea>
+      </section>
+<Stars review = {review?.rating || 3} setUserReview={setUserReview} userReview={userReview}/>
+      <CustomButton onClick={()=>handleSubmit()}>rate</CustomButton>
 </div>
   );
 };
