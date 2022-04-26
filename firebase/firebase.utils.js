@@ -1,9 +1,10 @@
 import * as firebase from 'firebase/app';
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
 import 'firebase/firestore';
 import 'firebase/auth';
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const config = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -19,12 +20,13 @@ const config = {
   messagingSenderId: "74912904856",
 
   appId: "1:74912904856:web:02cf81b3b171637a1e42ed",
-
-  measurementId: "G-0LZGDVNZJC"
-
 };
 
-initializeApp(config);
+const app = initializeApp(config);
+export const db = getFirestore(app);
+export const storage = getStorage(app);
+
+export default firebase;
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
@@ -94,10 +96,3 @@ export const getCurrentUser = () => {
 };
 
 export const auth = getAuth();
-//export const firestore = firebase.firestore();
-
-//export const googleProvider = new firebase.auth.GoogleAuthProvider();
-//googleProvider.setCustomParameters({ prompt: 'select_account' });
-//export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
-
-export default firebase;
