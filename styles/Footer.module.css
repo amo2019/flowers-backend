@@ -19,14 +19,14 @@
 
 .title {
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.774);
+  color: inherit;
   width: max-content;
   padding: 5px;
   transition: all 1s ease;
 }
 
 .title:hover {
-  color: rgba(0, 0, 228, 0.774);
+  color: #a6a6a6;
 }
 
 .linkTitle {

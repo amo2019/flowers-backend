@@ -72,3 +72,10 @@
   display: flex;
   align-items: center;
 }
+
+.total {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}

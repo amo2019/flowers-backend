@@ -1,27 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 /* base styles */
+//------------------
+
 :root {
-  --primary: #707378;
+  --dark-bg-c: white;
+  --dark-c: black;
+  --dark-input-bg-c: transparent;
+  --dark-gray-c: gray;
+  --dark-nav-c: #999;
+  --dark-nav-b-c: #333;
+  --dark-icon-c: #ec064d;
+  --light-bg-c: white;
 }
+
+[data-theme='dark'] {
+  --dark-bg-c: #0b0c11;
+  --dark-c: rgb(156, 156, 156);
+  --dark-input-bg-c: transparent;
+  --dark-gray-c: gray;
+  --dark-nav-c: #999;
+  --dark-nav-b-c: #333;
+  --dark-icon-c: #ec064d;
+  --light-bg-c: white;
+}
+
 body {
   padding: 0;
   margin: 0;
   font-family: 'Quicksand', sans-serif, -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue;
-  color: #444;
-  background: #f2f2f2;
 }
 
 html,
 a {
   color: inherit;
+  background: inherit;
   text-decoration: none;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.css-11xur9t-MuiPaper-root-MuiTableContainer-root {
+  background: inherit;
+  color: inherit;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  color: #b17300;
+}
+.css-ptiqhd-MuiSvgIcon-root {
+  color: orange;
+}
+
+.css-3ihp42-MuiDataGrid-root {
+  color: inherit;
+}
+
+.css-1ex1afd-MuiTableCell-root,
+.css-1ygcj2i-MuiTableCell-root,
+.css-rtrcn9-MuiTablePagination-root,
+.css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root,
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root {
+  color: inherit;
+}
+
+*:focus {
+  outline: none;
+}
+
+textarea {
+  box-shadow: 1px 2px #aaaaaa;
+  font-size: larger;
+  letter-spacing: 0.06rem;
+  background-color: #f8f8f8;
 }
 
 nav {
