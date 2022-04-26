@@ -2,14 +2,17 @@ import React, { useState, useReducer } from 'react';
 import CustomButton from '../customButton/CustomButton';
 import FormInput from '../formInput/FormInput';
 import style from "../../styles/SignIn.module.css";
+import {validateEmail} from '../utils/utils'
 
 import {
   useLogin,
   UserData,
+  uidData
 } from "../../zustand-store"
 
 const SignIn = () => {
   const login = useLogin();
+  const user = UserData();
   const [userCredentials, setUserCredentials] = useState({
     email: 'zara@gmail.com',
     password: '123456',
@@ -22,7 +25,24 @@ const SignIn = () => {
   const { email, password } = userCredentials;
   const handleSubmit = async event => {
     event.preventDefault();
+/*     if (!validateEmail(email)) {
+      console.log("invalid email");
+      return;
+    } */
     login(userCredentials);
+    try {
+      const req = await fetch('/api/user', {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          password,
+          name: email?.split('@')[0],
+        })
+      });
+      const res = await req.json();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleChange = event => {

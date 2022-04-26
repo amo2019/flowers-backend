@@ -2,13 +2,15 @@ import React, { useState, useReducer } from 'react';
 import FormInput from '../formInput/FormInput';
 import CustomButton from '../customButton/CustomButton';
 import style from "../../styles/SignUp.module.css";
+import {validateEmail} from '../utils/utils'
 import {
-  useSginup,
+  useSginup, UserData,
 } from "../../zustand-store"
 
 
 const SignUp = () => {
   const sginup = useSginup();
+  const user = UserData();
   const [userCredentials, setUserCredentials] = useState({
     displayName: '',
     email: '',
@@ -24,11 +26,30 @@ const SignUp = () => {
   const handleSubmit = async event => {
     event.preventDefault();
 
+/*     if (!validateEmail(email)) {
+      console.log("invalid email");
+      return;
+    } */
     if (password !== confirmPassword) {
-      alert("passwords don't match");
+      console.log("passwords don't match");
       return;
     }
     sginup(userCredentials);
+    if(user.user){
+      try {
+        const req = await fetch('/api/user', {
+          method: 'POST',
+          body: JSON.stringify({
+            email,
+            password,
+            name,
+          })
+        });
+        const res = await req.json();
+      } catch (err) {
+        console.log(err);
+      }
+    }
   };
 
   const handleChange = event => {
@@ -42,11 +63,11 @@ const SignUp = () => {
     <div className={style.signUpContainer}>
       <p>I do not have a account</p>
       <span>Sign up with your email and password</span>
-      <form className='sign-up-form' onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <FormInput
           type='text'
           name='displayName'
-          value={displayName}
+          value={displayName} 
           onChange={handleChange}
           label='Display Name'
           required
