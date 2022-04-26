@@ -16,8 +16,29 @@ export default async (req, res) => {
     }
   }
   if (req.method === 'POST') {
+    const data = JSON.parse(req.body);
+    let review = null
     try {
-      const data = JSON.parse(req.body);
+      const allReviews = await prisma.review.findFirst({
+        where: {
+          userId: data.userId,
+          productId: data.productId,
+        }
+      })
+      const existingReview = allReviews
+      if (existingReview) {
+        review =    await prisma.review.updateMany({
+          where: {
+            userId: data.userId,
+            productId: data.productId,
+          },
+          data: {
+            ...data
+          }
+        })
+        res.status(200).json(review);
+      } else {
+
       const review = await prisma.review.create({
         data: {
           text: data.text,
@@ -39,6 +60,7 @@ export default async (req, res) => {
       });
 
       res.status(200).json(review);
+    }
     } catch (err) {
       res.status(400).json({ message: 'Something went wrong' });
     }
