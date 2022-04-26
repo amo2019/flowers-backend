@@ -10,11 +10,11 @@ export const getUser = async function(user) {
   } catch (error) {
   }
 }
-export const getCartItems = async function(user) {
+export const getCartItems = async function({id}) {
   try {
     return await prisma.cartItem.findMany({
       where: {
-        userId: user.id,
+        userId: id,
       },
       include: {
         product: true,
@@ -26,9 +26,9 @@ export const getCartItems = async function(user) {
 }
 
 const formatMoney = function(amount) {
-  const formatter = Intl.NumberFormat('pt-AO', {
+  const formatter = Intl.NumberFormat('en-IN', {
     style: 'currency',
-    currency: 'AOA',
+    currency: 'USD',
     maximumFractionDigits: 2
   })
   return formatter.format(amount)

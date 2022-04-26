@@ -64,7 +64,6 @@ export default async (req, res) => {
   if (req.method === 'DELETE') {
     let cartItem = null
       const data = JSON.parse(req.body);
-      console.log("data::", data)
       try {
       if(data.productId==="delete"){
           const productsInCart = await prisma.cartItem.findMany({

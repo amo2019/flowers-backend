@@ -20,7 +20,7 @@ export const  loginWithEmail = (email, password) => {
     .then((userCredential) => {
       // Signed in 
       const userCred = userCredential.user;
-      state = { ...state, user: email, error: false };
+      state = { ...state, user: email, error: false, uid: userCred.uid };
       // ...
     })
     .catch((error) => {
@@ -29,17 +29,17 @@ export const  loginWithEmail = (email, password) => {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve(state);
-      }, 1000);
+      }, 1400);
     }); 
   }
-  export const signupWithEmail = (email, password, displayName) => {
+  export const signupWithEmail = async(email, password, displayName) => {
     let state = {}
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password, displayName)
       .then((userCredential) => {
         // Signed in 
         const userCred = userCredential.user;
-      state = { ...state, user: email, error: false };
+      state = { ...state, user: email, error: false, uid: userCred.uid };
       })
       .catch((error) => {
         state = { errorMs: error.message, error: true };
@@ -47,7 +47,7 @@ export const  loginWithEmail = (email, password) => {
       return new Promise(resolve => {
         setTimeout(() => {
           resolve(state);
-        }, 1200);
+        }, 1400);
       }); 
   }
   export const logoutMeOut = async () => {

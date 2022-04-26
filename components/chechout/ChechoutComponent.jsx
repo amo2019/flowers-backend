@@ -12,20 +12,14 @@ const CheckoutPage = ({cartItems}) => {
   const currency = "USD";
   const styles = { layout: "vertical" };
   const API_SERVER = "http://localhost:8080";
-  console.log("chechoutCartObj:",chechoutCartObj)
 
   const chechoutCart = Object.values(chechoutCartObj).flat();
-
-  //const chechoutCart = Object.keys(chechoutCartObj).map((personNamedIndex) => chechoutCartObj[personNamedIndex]).flat();
-  console.log("chechoutCart:",chechoutCart)
 
   const total = chechoutCart.reduce(
     (accumalatedQuantity, cartItem) =>
       accumalatedQuantity + cartItem.quantity * cartItem.price,
     0
   ) 
-  console.log("total:",total)
-
 
   return (
   <>
