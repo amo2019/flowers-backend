@@ -1,5 +1,12 @@
 import products from "../../flowers.json";
+import prisma from '../../db'; 
 
+export const getProducts = async function() {
+  try {
+    return await prisma.product.findMany({})
+  } catch (error) {
+  }
+}
 
 function flowers (req, res) {
   if (!req.query.title) {
