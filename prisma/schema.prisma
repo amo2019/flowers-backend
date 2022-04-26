@@ -9,42 +9,64 @@ datasource db {
 }
 
 model User {
-  id       String     @id @default(uuid())
-  name     String
-  email    String     @unique
-  password String
-  cartItem CartItem[]
-  orders   Order[]
-  reviews  Review[]
+  id         String     @id @default(uuid())
+  name       String
+  email      String     @unique
+  password   String
+  address    String?
+  country    String?
+  phone      String?
+  userStatus UStatus    @default(APPROVED) @map("user_status")
+  image      String?
+  role       Role       @default(USER)
+  notice     String?
+  createdAt  DateTime   @default(now()) @map("created_at")
+  cartItem   CartItem[]
+  orders     Order[]
+  reviews    Review[]
+  sessions   Session[]
 }
 
 model Product {
-  id          String      @id @default(uuid())
-  name        String
-  price       Int
-  image       String
-  description String?
-  cartItem    CartItem[]
-  reviews     Review[]
-  orderItems  OrderItem[]
+  id            String      @id @default(uuid())
+  name          String
+  price         Int
+  size          Int?
+  image         String
+  description   String?
+  category      String?
+  notice        String?
+  amountInStock Int         @default(100) @map("amount_in_stock")
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at")
+  cartItem      CartItem[]
+  reviews       Review[]
+  orderItems    OrderItem[]
 }
 
 model CartItem {
-  id        String  @id @default(uuid())
-  quantity  Int     @default(1)
+  id        String   @id @default(uuid())
+  quantity  Int      @default(1)
   productId String
   userId    String
-  product   Product @relation(fields: [productId], references: [id])
-  user      User    @relation(fields: [userId], references: [id])
+  done      Boolean? @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  product   Product  @relation(fields: [productId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model Order {
-  id     String      @id @default(uuid())
-  total  Int?        @default(0)
-  charge String?
-  userId String
-  user   User        @relation(fields: [userId], references: [id])
-  items  OrderItem[]
+  id          String      @id @default(uuid())
+  total       Int?        @default(0)
+  charge      String?
+  userId      String
+  orderStatus PStatus     @default(STAGE_ONE) @map("order_status")
+  method      Method      @default(ONLINE)
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+  user        User        @relation(fields: [userId], references: [id])
+  items       OrderItem[]
 }
 
 model OrderItem {
@@ -56,11 +78,49 @@ model OrderItem {
 }
 
 model Review {
-  id        String  @id @default(cuid())
+  id        String   @id @default(cuid())
   rating    Int
   text      String
   productId String
   userId    String
-  product   Product @relation(fields: [productId], references: [id])
-  user      User    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  product   Product  @relation(fields: [productId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum PStatus {
+  STAGE_ONE
+  STAGE_TWO
+  STAGE_THREE
+  STAGE_FOUR
+  STAGE_FIVE
+  STAGE_SIX
+}
+
+enum UStatus {
+  PENDING
+  APPROVED
+  PAUSED
+  DELETED
+}
+
+enum Method {
+  CASH
+  ONLINE
 }
