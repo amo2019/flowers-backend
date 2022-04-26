@@ -1,6 +1,24 @@
 import prisma from '../../db';
 
 export default async ( req, res ) => {
+  const admin = req.query.admin;
+  if (req.method === 'GET' && admin) {
+    try {
+     const orders = await prisma.order.findMany({
+      include: {
+        items: {
+          include: {
+            products: true
+          }
+        },
+        user: true
+      }
+     })
+     res.status(200).json({ orders });
+    } catch (err) {
+      res.status(400).json({ message: 'Something went wrong' });
+    }
+  }
   if (req.method === 'GET') {
     try {
       const data = JSON.parse(req.body);
@@ -23,6 +41,25 @@ export default async ( req, res ) => {
       res.status(400).json({ message: 'Something went wrong' });
     }
   }
+
+  
+  if (req.method === 'PUT' && admin) {
+    const data = JSON.parse(req.body);
+    try {
+     const order = await prisma.order.updateMany({
+      where: {
+        id: data.orderId
+      },
+      data: {
+        orderStatus:data.orderStatus
+      }
+     })
+     res.status(200).json({ order });
+    } catch (err) {
+      res.status(400).json({ message: 'Something went wrong' });
+    }
+  }
+
   if (req.method === 'POST') {
       const data = JSON.parse(req.body);
 
@@ -66,6 +103,18 @@ export default async ( req, res ) => {
             }
           }
         })
+        try {
+          await prisma.cartItem.deleteMany({
+            where: {
+              user: {
+                id: data.userId
+              }
+            }
+          })
+        }catch (err) {
+        console.log("err:",err)
+        res.status(400).json({ message: JSON.stringify(err)});
+      }
         res.status(200).json({ items });
       } catch (error) {
         console.log("err:",error)
@@ -75,7 +124,6 @@ export default async ( req, res ) => {
 
   if (req.method === 'DELETE') {
       const data = JSON.parse(req.body);
-      console.log("data::", data)
       try {
         await prisma.cartItem.deleteMany({
           where: {
