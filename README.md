@@ -18,8 +18,6 @@ Link: https://flowers-lac.vercel.app/
 
 ![alt text](https://amo2019.github.io/media-sample-files/flowers/admin-dashboard.png?raw=true&s=100)
 
-![alt text](https://amo2019.github.io/media-sample-files/flowers/admin-orders.png?raw=true&s=100)
-
 ![alt text](https://amo2019.github.io/media-sample-files/flowers/main.png?raw=true&s=100)
 
 ![alt text](https://amo2019.github.io/media-sample-files/flowers/details.png?raw=true&s=100)
