@@ -30,19 +30,6 @@ const SignIn = () => {
       return;
     } */
     login(userCredentials);
-    try {
-      const req = await fetch('/api/user', {
-        method: 'POST',
-        body: JSON.stringify({
-          email,
-          password,
-          name: email?.split('@')[0],
-        })
-      });
-      const res = await req.json();
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   const handleChange = event => {

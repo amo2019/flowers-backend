@@ -26,8 +26,8 @@ export async function getServerSideProps(context) {
   };
 }
 
-function Title ({res}) {
-  const {reviews:[review], ...data} = res;
+function Title ({res} ) {
+  const {reviews:[review], ...data} = res; // || {reviews: []};
   const [userReview, setUserReview] = useState({
     userText: review?.text ? review.text:'',
     starsNo: review?.rating ? review.rating:4,
@@ -81,7 +81,6 @@ function Title ({res}) {
       });
 
       const res = await req.json();
-      console.log("res:",res);
     } catch (err) {
       console.log(err);
     }
@@ -119,7 +118,7 @@ const {userText, starsNo} = userReview;
             <div key={key}>
               {(key !== "image" && key !== "createdAt" && key !== "updatedAt" && key !== "amountInStock" && key !== "notice") && 
               <>
-              <span style={{fontWeight: "bold"}}>{key}:&nbsp;:&nbsp;</span>
+              <span >{key}:&nbsp;:&nbsp;</span>
               <span >{key=="id"?value.slice(26, 32).concat("..."):value}&nbsp;</span> 
               </>  }
             </div>
@@ -134,9 +133,10 @@ const {userText, starsNo} = userReview;
       </>
   )}
 </div>
+    <div className={style.ratingContainer}>
       <section>
         <textarea
-               rows="5" cols="36"
+               rows="3" cols="34"
                placeholder="Add a review"
                name='userText'
                value={userText}
@@ -144,8 +144,9 @@ const {userText, starsNo} = userReview;
                >
           </textarea>
       </section>
-<Stars review = {review?.rating || 3} setUserReview={setUserReview} userReview={userReview}/>
-      <CustomButton onClick={()=>handleSubmit()}>rate</CustomButton>
+        <Stars review = {review?.rating || 3} setUserReview={setUserReview} userReview={userReview}/>
+        <CustomButton style={{maxWidth: "6ch"}} onClick={()=>handleSubmit()}>rate</CustomButton>
+  </div>
 </div>
   );
 };

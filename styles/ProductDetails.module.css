@@ -18,6 +18,8 @@
 
 .textContainer {
   display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
   flex-wrap: wrap;
   max-width: 50ch;
   padding: 5px 5px;
@@ -30,4 +32,18 @@
 .buttonsBarContainer {
   display: flex;
   justify-content: space-between;
+}
+
+.textContainer > div > span:first-of-type {
+  font-weight: bold;
+}
+
+.ratingContainer {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 130ch;
+  padding: 5px 5px;
+  align-items: center;
 }

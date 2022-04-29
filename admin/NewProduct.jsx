@@ -70,10 +70,10 @@ const NewUser = ({ inputs, title = 'Product' }) => {
 
   const handleAdd = async (e) => {
     e.preventDefault();
-    delete data.id;
+    //if(!query.id) delete data.id;
     try {
       const req = await fetch('/api/product', {
-        method: 'POST',
+        method: 'PUT',
         body: JSON.stringify({
           ...data
         })

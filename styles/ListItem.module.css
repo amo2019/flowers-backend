@@ -62,4 +62,5 @@
 .listItem:hover .itemInfo .desc {
   font-size: 13px;
   margin-bottom: 10px;
+  max-width: 160px;
 }

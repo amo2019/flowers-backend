@@ -42,28 +42,29 @@ export default async ( req, res ) => {
     }
   }
 
-  if (req.method === 'POST') {
+  if (req.method === 'PUT') {
     let product = null
     const data = JSON.parse(req.body);
       try {
+        if(data.id){
         const allProductss = await prisma.product.findFirst({
           where: {
-            name: data.name,
+            id: data.id,
           }
         })
         const existingProduct = allProductss
         if (existingProduct) {
-          product =    await prisma.product.updateMany({
+          product =    await prisma.product.update({
             where: {
-              name: existingProduct.name,
+              id: existingProduct.id,
             },
             data: {
               ...data
             }
           })
           res.status(200).json(product);
-        } else {
-
+        }} else {
+          delete data.id;
           product =   await prisma.product.create({
             data: {
               ...data
@@ -108,4 +109,17 @@ if (req.method === 'DELETE') {
             user: true
           }
         }
+
+
+      product = await prisma.product.upsert({
+            where: {
+              id: data.id,
+            },
+            update: {
+                ...data
+            },
+            create: {
+                ...data
+            },
+          })
       } */
