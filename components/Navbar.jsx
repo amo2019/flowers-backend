@@ -13,8 +13,8 @@ import {
 import CartDropdown from './cartDropdown/CartDropdown';
 
 export default function Navbar() {
-  const [toggleState, setToggleState] = useState(true);
   const login = useLogin();
+  const [toggleState, setToggleState] = useState(true);
   const logout = useLogout();
   const data = useCartItems()
   const user = UserData();
@@ -41,7 +41,11 @@ export default function Navbar() {
          <div className={style.logoContainer} onClick={() => setToggleState(!toggleState)}>
            <a><Image src="/img/shopping_cart.svg" width="30" height="30" className={style.logo} alt="app logo" /></a>
           </div>
-            <Link href="/signin-signup"><a>{!user && <li onClick={login} className={style.btn}>Login/Signup</li>}</a></Link>
+            <Link href="/authorize" passHref>
+              <>
+              {!user && <li onClick={login} className={style.btn}>LoginSignup</li>}
+              </>
+            </Link>
             {/* {user && <li>{user}</li>} */}
             {user && <li onClick={logout} className={style.btn}>Logout</li>}
           </ul>
