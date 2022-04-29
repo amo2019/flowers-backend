@@ -1,6 +1,7 @@
 import create from "zustand";
 import { persist } from 'zustand/middleware';
 import Router from 'next/router'
+import bcrypt from 'bcryptjs';
 import {addItemToCart, addItemsToCart, removeItemFromCart} from './utils/cart.utils'
 import {loginWithEmail, signupWithEmail, logoutMeOut} from './utils/auth.utils'
 const useStore = create( persist((set, get) => ({
@@ -25,15 +26,54 @@ const useStore = create( persist((set, get) => ({
 
   login: async ({email, password}) => { 
       let res = await loginWithEmail(email, password)
-      if (!res.error) {
+      let user = null;
+      const credentials = { email, password };
+      try {
+        const authRes = await fetch('/api/auth/login', {
+          method: 'POST',
+          body: JSON.stringify(credentials)
+        });
+         user = await authRes.json();
+      } catch (err) {
+        console.log(err);
+      }
+      if (!res.error && user?.message === "Success!") {
         set(() => ({user: res.user?.split('@')[0]}))
         set((state) => ({...state.uid, uid:res.uid }))
       Router.push('/')
       } else set(() => ({ error: res.errorMs }))
   },
   signup:  async({ email, password, displayName} ) => {
-    let res = await signupWithEmail(email, password, displayName)
-    if (!res.error) {
+    let res = await signupWithEmail(email, password, displayName);
+    let user = null;
+    const credentials = { email, password };
+   if(!res.error){
+    try {
+      const hashedPassword = await bcrypt.hash(password, 8);
+      const req = await fetch('/api/user', {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          password: hashedPassword,
+          name: email?.split('@')[0],
+        })
+      });
+      const res = await req.json();
+    } catch (err) {
+      console.log(err);
+    }
+
+    try {
+      const authRes = await fetch('/api/auth/login', {
+        method: 'POST',
+        body: JSON.stringify(credentials)
+      });
+       user = await authRes.json();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+    if (!res.error && user?.message === "Success!") {
       set(() => ({user: res.user?.split('@')[0]}))
       set((state) => ({...state.uid, uid:res.uid }))
     Router.push('/')
@@ -41,6 +81,8 @@ const useStore = create( persist((set, get) => ({
   }, 
   logout: async () => {
     let res = await logoutMeOut()
+    const out = await fetch('/api/auth/logout');
+    await out.json();
     if (res.loggedout) set((state) => ({...state.user, user: "" }))
 },
   addToCart: (cartItemToAdd) => set((state) => ({ cartItems: addItemToCart(state.cartItems, cartItemToAdd)})),
