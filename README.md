@@ -1,8 +1,8 @@
 # flowers
 
-E-Commerece Nextjs app inclues Database SQL or NoSQL
+E-Commerece Nextjs app inclues SQL Database
 
-Link: https://flowers-lac.vercel.app/
+Link: https://flowers-project.vercel.app/
 
 # ECOMMERCE WEB APP
 
